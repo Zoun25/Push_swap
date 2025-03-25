@@ -9,7 +9,7 @@
 /*   Updated: 2023/09/27 18:00:45 by ysadki-z         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include "../includes/libft.h"
+#include "../../includes/libft.h"
 
 static int	ft_setfind(char c, const char *set)
 {

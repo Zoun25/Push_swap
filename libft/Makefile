@@ -58,10 +58,13 @@ SRCS = libft/ft_isalpha.c \
 		libft/ft_lstadd_front.c \
 		libft/ft_lstsize.c \
 		libft/ft_lstlast.c \
+		libft/ft_lst_init.c \
 		ft_printf/ft_printf.c \
 		ft_printf/ft_hex.c \
 		ft_printf/ft_ptr.c \
-		ft_printf/ft_stringnum.c
+		ft_printf/ft_stringnum.c \
+		get_next_line/get_next_line.c \
+		get_next_line/get_next_line_utils.c \
 
 ######
 #OBJS#
@@ -86,6 +89,7 @@ ${OBJS_DIR}:
 	@mkdir ${OBJS_DIR}
 	@mkdir ${OBJS_DIR}libft
 	@mkdir ${OBJS_DIR}ft_printf
+	@mkdir ${OBJS_DIR}get_next_line
 
 clean:
 	@${RM} ${OBJS_DIR}

@@ -3,11 +3,27 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ysadki-z <ysadki-z@student.42madrid.com>   +#+  +:+       +#+        */
+/*   By: ysadki-z <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/09 23:42:17 by ysadki-z          #+#    #+#             */
-/*   Updated: 2025/03/09 23:42:18 by ysadki-z         ###   ########.fr       */
+/*   Created: 2025/01/16 14:46:31 by ysadki-z          #+#    #+#             */
+/*   Updated: 2025/01/16 14:46:32 by ysadki-z         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#ifndef PUSH_SWAP_H
+# define PUSH_SWAP_H
 
+# include "../libft/includes/ft_printf.h"
+# include "../libft/includes/get_next_line.h"
+# include "../libft/includes/libft.h"
+
+typedef struct pushswap_data
+{
+	t_cont	a;
+	t_cont	b;
+	size_t	size;
+}	t_stack;
+
+int	*ft_split_stack(char **argv, int size);
+
+#endif

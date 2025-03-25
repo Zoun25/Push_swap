@@ -25,9 +25,9 @@ RM = rm -rf
 NAME = push_swap
 
 SRCS_DIR = ./srcs/
-SRCS = 
-
-
+SRCS = push_swap.c \
+		ft_split_stack.c \
+		
 ######
 #OBJS#
 ######
