@@ -56,6 +56,7 @@ SRCS = libft/ft_isalpha.c \
 		libft/ft_putnbr_fd.c \
 		libft/ft_lstnew.c \
 		libft/ft_lstadd_front.c \
+		libft/ft_lstadd_back.c \
 		libft/ft_lstsize.c \
 		libft/ft_lstlast.c \
 		libft/ft_lst_init.c \
