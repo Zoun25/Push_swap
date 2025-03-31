@@ -32,23 +32,6 @@ void	ft_check_stack(t_stack *stack, char **argv)
 	}
 }
 
-t_cont	ft_create_stack(t_stack *stack)
-{
-	t_cont	*new;
-
-	new = (t_cont *)malloc(sizeof(t_cont *) * stack->size);
-	if (new == NULL)
-	{
-		free(stack->knot);
-		free(stack);
-		ft_push_error(87);
-	}
-	new->len = stack->size;
-	new->first = NULL;
-	new->del = NULL;
-	return (*new);
-}
-
 int	main(int argc, char **argv)
 {
 	t_stack	stack;
