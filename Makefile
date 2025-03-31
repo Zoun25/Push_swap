@@ -27,6 +27,11 @@ NAME = push_swap
 SRCS_DIR = ./srcs/
 SRCS = push_swap.c \
 		ft_split_stack.c \
+		ft_push_error.c \
+		movements/ft_push.c \
+		movements/ft_rotate.c \
+		movements/ft_reverse.c \
+		movements/ft_swap.c \
 		
 ######
 #OBJS#
@@ -46,6 +51,7 @@ $(NAME): ${LIBFT_LIB} $(OBJS)
 	@printf "${CLEAR}${RESET}────────────────────────────────────────────────────\n$(GREEN)»$(NAME): $(RESET)$(PURPLE)Built!🧱\n$(RESET)"
 $(OBJS_DIR):
 	@mkdir $(OBJS_DIR)
+	@mkdir $(OBJS_DIR)movements
 $(OBJS):		| $(OBJS_DIR)
 $(LIBFT_LIB):
 	@make -C $(LIBFT_DIR) -s

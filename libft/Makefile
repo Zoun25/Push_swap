@@ -60,6 +60,7 @@ SRCS = libft/ft_isalpha.c \
 		libft/ft_lstsize.c \
 		libft/ft_lstlast.c \
 		libft/ft_lst_init.c \
+		libft/ft_lstfree_cont.c \
 		ft_printf/ft_printf.c \
 		ft_printf/ft_hex.c \
 		ft_printf/ft_ptr.c \

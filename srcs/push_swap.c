@@ -62,45 +62,6 @@ void	ft_create_stack_b(t_stack *stack)
 	}
 }
 
-void	ft_print_stacks(t_stack *stack)
-{
-	t_list	*tmp;
-
-	ft_printf("Stack A (len = %i):\n", stack->a.len);
-	tmp = stack->a.first;
-	while (tmp)
-	{
-		ft_printf("%d ", (int)((long)tmp->content));
-		tmp = tmp->next;
-	}
-	ft_printf("\n");
-
-	ft_printf("Stack B (len = %i):\n", stack->b.len);
-	tmp = stack->b.first;
-	while (tmp)
-	{
-		if (tmp->content)
-			ft_printf("%d ", (int)((long)tmp->content));
-		else
-			ft_printf("NULL ");
-		tmp = tmp->next;
-	}
-	ft_printf("\n");
-}
-
-void	ft_lstfree_cont(t_cont *cont)
-{
-	t_list	*tmp;
-
-	while (cont->first)
-	{
-		tmp = cont->first->next;
-		free(cont->first);
-		cont->first = tmp;
-	}
-	cont->len = 0;
-}
-
 void	ft_lstfree(t_stack *stack)
 {
 	if (!stack)
@@ -129,9 +90,36 @@ int	main(int argc, char **argv)
 			return (0);
 		}
 		ft_create_stack_a(&stack);
-		ft_create_stack_b(&stack);
+		ft_print_stacks(&stack);
+		ft_reverse_a(&stack);
 		ft_print_stacks(&stack);
 		ft_lstfree(&stack);
 	}
 	return (0);
+}
+
+void	ft_print_stacks(t_stack *stack)
+{
+	t_list	*tmp;
+
+	ft_printf("\nStack A (len = %i):\n", stack->a.len);
+	tmp = stack->a.first;
+	while (tmp)
+	{
+		ft_printf("%d ", (int)((long)tmp->content));
+		tmp = tmp->next;
+	}
+	ft_printf("\n");
+
+	ft_printf("Stack B (len = %i):\n", stack->b.len);
+	tmp = stack->b.first;
+	while (tmp)
+	{
+		if (tmp->content)
+			ft_printf("%d ", (int)((long)tmp->content));
+		else
+			ft_printf("NULL ");
+		tmp = tmp->next;
+	}
+	ft_printf("\n");
 }

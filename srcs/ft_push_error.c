@@ -1,28 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstadd_front.c                                  :+:      :+:    :+:   */
+/*   ft_push_error.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yozai <marvin@42.fr>                       +#+  +:+       +#+        */
+/*   By: ysadki-z <ysadki-z@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/22 13:09:23 by yozai             #+#    #+#             */
-/*   Updated: 2025/01/22 13:09:25 by yozai            ###   ########.fr       */
+/*   Created: 2025/03/31 15:45:23 by ysadki-z          #+#    #+#             */
+/*   Updated: 2025/03/31 15:45:25 by ysadki-z         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+#include "../include/push_swap.h"
 
-#include "../../includes/libft.h"
-
-void	ft_lstadd_front(t_list **lst, t_list *new)
+void	ft_push_error(int nberr)
 {
-	void	*tmp;
-
-	if (!lst || !new)
-		return ;
-	if (*lst)
-	{
-		tmp = (*lst)->content;
-		(*lst)->content = new->content;
-		new->content = tmp;
-		new->next = *lst;
-	}
+	write(2, "Error\n", 7);
+	exit(nberr);
 }

@@ -11,22 +11,13 @@
 /* ************************************************************************** */
 #include "../include/push_swap.h"
 
-void	ft_push_error(int nberr)
-{
-	write(2, "Error\n", 7);
-	exit(nberr);
-}
-
 void	ft_free_argv(char **argv)
 {
 	int	i;
 
 	i = 0;
 	while (argv[i] != NULL)
-	{
-		free(argv[i]);
-		i++;
-	}
+		free(argv[i++]);
 	free(argv);
 }
 
@@ -37,9 +28,8 @@ int	ft_norepeat(int *stack, int nb, int p)
 	i = 0;
 	while (i < p)
 	{
-		if (stack[i] == nb)
+		if (stack[i++] == nb)
 			return (0);
-		i++;
 	}
 	return (1);
 }

@@ -30,5 +30,17 @@ int		*ft_stack_multi(char **argv, int size);
 int		*ft_stack_single(char *argv, t_stack *stack);
 void	ft_push_error(int nberr);
 void	ft_free_argv(char **argv);
+void	ft_print_stacks(t_stack *stack);
+void	ft_push_a(t_stack *stack);
+void	ft_push_b(t_stack *stack);
+void	ft_swap_a(t_stack *stack);
+void	ft_swap_b(t_stack *stack);
+void	ft_swap_ss(t_stack *stack);
+void	ft_rotate_a(t_stack *stack);
+void	ft_rotate_b(t_stack *stack);
+void	ft_rotate(t_stack *stack);
+void	ft_reverse_a(t_stack *stack);
+void	ft_reverse_b(t_stack *stack);
+void	ft_reverse(t_stack *stack);
 
 #endif

@@ -1,28 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstadd_front.c                                  :+:      :+:    :+:   */
+/*   ft_lstfree_cont.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yozai <marvin@42.fr>                       +#+  +:+       +#+        */
+/*   By: ysadki-z <ysadki-z@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/22 13:09:23 by yozai             #+#    #+#             */
-/*   Updated: 2025/01/22 13:09:25 by yozai            ###   ########.fr       */
+/*   Created: 2025/03/31 15:41:30 by ysadki-z          #+#    #+#             */
+/*   Updated: 2025/03/31 15:41:44 by ysadki-z         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 #include "../../includes/libft.h"
 
-void	ft_lstadd_front(t_list **lst, t_list *new)
+void	ft_lstfree_cont(t_cont *cont)
 {
-	void	*tmp;
+	t_list	*tmp;
 
-	if (!lst || !new)
-		return ;
-	if (*lst)
+	while (cont->first)
 	{
-		tmp = (*lst)->content;
-		(*lst)->content = new->content;
-		new->content = tmp;
-		new->next = *lst;
+		tmp = cont->first->next;
+		free(cont->first);
+		cont->first = tmp;
 	}
+	cont->len = 0;
 }
