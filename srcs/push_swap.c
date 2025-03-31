@@ -91,7 +91,7 @@ int	main(int argc, char **argv)
 		}
 		ft_create_stack_a(&stack);
 		ft_print_stacks(&stack);
-		ft_reverse_a(&stack);
+		ft_rotate_a(&stack);
 		ft_print_stacks(&stack);
 		ft_lstfree(&stack);
 	}
