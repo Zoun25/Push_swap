@@ -40,8 +40,8 @@ int	main(int argc, char **argv)
 	{
 		ft_init(&stack, argc);
 		ft_check_stack(&stack, argv);
-		stack.a = ft_create_stack(&stack);
-		stack.b = ft_create_stack(&stack);
+		stack.a = ft_create_stack_a(&stack);
+		stack.b = ft_create_stack_b(&stack);
 	}
 	return (0);
 }
