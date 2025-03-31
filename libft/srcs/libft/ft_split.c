@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 #include "../../includes/libft.h"
 
-static int	ft_countwords(const char *s, char c)
+int	ft_countwords(const char *s, char c)
 {
 	int	i;
 	int	w;
@@ -45,9 +45,7 @@ static int	ft_strlenc(const char *s, char c)
 
 	i = 0;
 	while (s[i] != '\0' && s[i] != c)
-	{
 		i++;
-	}
 	return (i);
 }
 
@@ -72,7 +70,7 @@ char	**ft_split(const char *s, char c)
 
 	i = 0;
 	w = ft_countwords(s, c);
-	str = (char **)malloc(sizeof(char *) * (w + 1));
+	str = (char **)malloc(sizeof(char **) * (w + 1));
 	if (str == NULL)
 		return (NULL);
 	while (i < w && *s)

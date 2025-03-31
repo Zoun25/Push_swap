@@ -11,40 +11,54 @@
 /* ************************************************************************** */
 #include "../include/push_swap.h"
 
-void	ft_init(t_stack *stack)
+void	ft_init(t_stack *stack, int size)
 {
 	ft_memset(stack, 0, sizeof(t_stack));
+	stack->size = size - 1;
 	ft_lst_init(&stack->a, NULL);
 	ft_lst_init(&stack->b, NULL);
 }
 
 void	ft_check_stack(t_stack *stack, char **argv)
 {
-	int		*stack_a;
-	size_t	a;
-
-	a = 0;
-	/* if (stack->size == 2)
-		stack = ft_split_stack_single(argv);
-	else */
-	ft_printf("size: %i\n", stack->size);
-		stack_a = ft_split_stack(argv, stack->size);
-	while (a < stack->size)
+	if (stack->size == 1)
+		stack->knot = ft_stack_single(argv[1], stack);
+	else
+		stack->knot = ft_stack_multi(argv, stack->size);
+	if (stack->knot == NULL)
 	{
-		printf("number: %i\n", stack_a[a]);
-		a++;
+		free(stack);
+		ft_push_error(87);
 	}
+}
+
+t_cont	ft_create_stack(t_stack *stack)
+{
+	t_cont	*new;
+
+	new = (t_cont *)malloc(sizeof(t_cont *) * stack->size);
+	if (new == NULL)
+	{
+		free(stack->knot);
+		free(stack);
+		ft_push_error(87);
+	}
+	new->len = stack->size;
+	new->first = NULL;
+	new->del = NULL;
+	return (*new);
 }
 
 int	main(int argc, char **argv)
 {
 	t_stack	stack;
 
-	if (argc > 2)
+	if (argc >= 2)
 	{
-		ft_init(&stack);
-		stack.size = argc;
+		ft_init(&stack, argc);
 		ft_check_stack(&stack, argv);
+		stack.a = ft_create_stack(&stack);
+		stack.b = ft_create_stack(&stack);
 	}
 	return (0);
 }

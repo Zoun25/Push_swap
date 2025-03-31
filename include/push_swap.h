@@ -22,8 +22,13 @@ typedef struct pushswap_data
 	t_cont	a;
 	t_cont	b;
 	size_t	size;
+	int		*knot;
 }	t_stack;
 
-int	*ft_split_stack(char **argv, int size);
+
+int		*ft_stack_multi(char **argv, int size);
+int		*ft_stack_single(char *argv, t_stack *stack);
+void	ft_push_error(int nberr);
+void	ft_free_argv(char **argv);
 
 #endif
