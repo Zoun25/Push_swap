@@ -16,11 +16,23 @@ void	ft_push_b(t_stack *stack)
 	t_list	*node;
 
 	if (!stack->a.first)
+	{
+		ft_lstfree(stack);
 		ft_push_error(87);
+	}
 	node = stack->a.first;
 	stack->a.first = node->next;
 	node->next = NULL;
-	ft_lstadd_front(&stack->b.first, node);
+	if (!stack->b.first)
+	{
+		stack->b.first = node;
+		stack->b.first->next = NULL;
+	}
+	else
+	{
+		node->next = stack->b.first;
+		stack->b.first = node;
+	}
 	stack->b.len++;
 	if (stack->a.len > 0)
 		stack->a.len--;
@@ -32,11 +44,23 @@ void	ft_push_a(t_stack *stack)
 	t_list	*node;
 
 	if (!stack->b.first)
+	{
+		ft_lstfree(stack);
 		ft_push_error(87);
+	}
 	node = stack->b.first;
 	stack->b.first = node->next;
 	node->next = NULL;
-	ft_lstadd_front(&stack->a.first, node);
+	if (!stack->b.first)
+	{
+		stack->a.first = node;
+		stack->a.first->next = NULL;
+	}
+	else
+	{
+		node->next = stack->a.first;
+		stack->a.first = node;
+	}
 	stack->a.len++;
 	if (stack->b.len > 0)
 		stack->b.len--;

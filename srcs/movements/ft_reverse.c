@@ -17,7 +17,10 @@ void	ft_reverse_a(t_stack *stack)
 	t_list	*last;
 
 	if (!stack->a.first || stack->a.len < 2)
+	{
+		ft_lstfree(stack);
 		ft_push_error(87);
+	}
 	prev = stack->a.first;
 	while (prev->next->next)
 		prev = prev->next;
@@ -34,7 +37,10 @@ void	ft_reverse_b(t_stack *stack)
 	t_list	*last;
 
 	if (!stack->b.first || stack->b.len < 2)
+	{
+		ft_lstfree(stack);
 		ft_push_error(87);
+	}
 	prev = stack->b.first;
 	while (prev->next->next)
 		prev = prev->next;
@@ -47,11 +53,16 @@ void	ft_reverse_b(t_stack *stack)
 
 void	ft_reverse(t_stack *stack)
 {
-
 	if (!stack->a.first || stack->a.len < 2)
+	{
+		ft_lstfree(stack);
 		ft_push_error(87);
+	}
 	if (!stack->b.first || stack->b.len < 2)
+	{
+		ft_lstfree(stack);
 		ft_push_error(87);
+	}
 	ft_reverse_a(stack);
 	ft_reverse_b(stack);
 	ft_printf("rrr\n");

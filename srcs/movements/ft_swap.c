@@ -16,7 +16,10 @@ void	ft_swap_a(t_stack *stack)
 	t_list	*tmp;
 
 	if (stack->a.len < 2)
+	{
+		ft_lstfree(stack);
 		ft_push_error(87);
+	}
 	tmp = stack->a.first;
 	stack->a.first = tmp->next;
 	tmp->next = stack->a.first->next;
@@ -29,7 +32,10 @@ void	ft_swap_b(t_stack *stack)
 	t_list	*tmp;
 
 	if (stack->b.len < 2)
+	{
+		ft_lstfree(stack);
 		ft_push_error(87);
+	}
 	tmp = stack->b.first;
 	stack->b.first = tmp->next;
 	tmp->next = stack->b.first->next;
@@ -40,7 +46,10 @@ void	ft_swap_b(t_stack *stack)
 void	ft_swap_ss(t_stack *stack)
 {
 	if (stack->a.len < 2 || stack->b.len < 2)
+	{
+		ft_lstfree(stack);
 		ft_push_error(87);
+	}
 	ft_swap_a(stack);
 	ft_swap_b(stack);
 	ft_printf("ss\n");

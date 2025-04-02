@@ -25,7 +25,6 @@ typedef struct pushswap_data
 	int		*knot;
 }	t_stack;
 
-
 int		*ft_stack_multi(char **argv, int size);
 int		*ft_stack_single(char *argv, t_stack *stack);
 void	ft_push_error(int nberr);
@@ -42,6 +41,7 @@ void	ft_rotate(t_stack *stack);
 void	ft_reverse_a(t_stack *stack);
 void	ft_reverse_b(t_stack *stack);
 void	ft_reverse(t_stack *stack);
+void	ft_lstfree(t_stack *stack);
 /* void	ft_simple_sort(t_stack *stack);
 void	ft_sort_100(t_stack *stack);
 void	ft_sort_500(t_stack *stack); */

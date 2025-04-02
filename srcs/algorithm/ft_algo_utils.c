@@ -27,26 +27,18 @@ int	ft_get_min_index(t_stack *stack)
 	return (min_index);
 }
 
-int	*ft_getsorted(t_stack *stack)
+int	*ft_bubble(int *sorted_array, int size)
 {
-	int		*sorted_array;
-	int		i;
-	int		b;
-	int		tmp;
+	int	i;
+	int	b;
+	int	tmp;
 
-	i = 0;
 	b = 1;
-	sorted_array = (int *)malloc(sizeof(int *) * stack->size);
-	while (stack->knot[i] && i < (int)stack->size)
-	{
-		sorted_array[i] = stack->knot[i];
-		i++;
-	}
 	while (b)
 	{
 		b = 0;
 		i = 0;
-		while (i < (int)stack->size - 1)
+		while (i < size)
 		{
 			if (sorted_array[i] > sorted_array[i + 1])
 			{
@@ -61,12 +53,31 @@ int	*ft_getsorted(t_stack *stack)
 	return (sorted_array);
 }
 
+int	*ft_getsorted(t_stack *stack)
+{
+	int		*sorted_array;
+	int		i;
+	int		b;
+
+	i = 0;
+	b = 1;
+	sorted_array = (int *)malloc(sizeof(int *) * stack->size);
+	if (sorted_array == NULL)
+		return (NULL);
+	while (i < (int)stack->size)
+	{
+		sorted_array[i] = stack->knot[i];
+		i++;
+	}
+	sorted_array = ft_bubble(sorted_array, ((int)stack->size -1));
+	return (sorted_array);
+}
+
 int	ft_is_sorted(t_stack *stack, int *srt)
 {
 	int		i;
 	int		size;
 	t_list	*tmp;
-
 
 	tmp = stack->a.first;
 	size = (int)stack->size - 1;

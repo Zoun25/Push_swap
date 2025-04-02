@@ -28,37 +28,17 @@ void	ft_create_stack_a(t_stack *stack)
 
 	stack->a.first = NULL;
 	stack->a.len = 0;
-	stack->a.del = NULL;
+	stack->b.first = NULL;
+	stack->b.len = 0;
 	i = 0;
 	while (i < stack->size)
 	{
-		new_node = ft_lstnew((void *)((long)stack->knot[i]));
+		new_node = ft_lstnew((void *)(long)stack->knot[i]);
 		if (!new_node)
 			return ;
 		ft_lstadd_back(&stack->a.first, new_node);
 		stack->a.len++;
 		i++;
-	}
-}
-
-void	ft_create_stack_b(t_stack *stack)
-{
-	size_t	j;
-	t_list	*new_node;
-
-	stack->b.first = NULL;
-	stack->b.len = 0;
-	stack->b.del = NULL;
-
-	j = 0;
-	while (j < stack->a.len)
-	{
-		new_node = ft_lstnew(NULL);
-		if (!new_node)
-			return ;
-		ft_lstadd_back(&stack->b.first, new_node);
-		stack->b.len++;
-		j++;
 	}
 }
 
@@ -101,9 +81,11 @@ int	main(int argc, char **argv)
 		sorted_array = ft_getsorted(&stack);
 		if (ft_is_sorted(&stack, sorted_array))
 			ft_printf("Stack is sorted\n");
-		
-		free(sorted_array);
+		ft_push_b(&stack);
 		ft_print_stacks(&stack);
+		ft_push_b(&stack);
+		ft_print_stacks(&stack);
+		free(sorted_array);
 		ft_lstfree(&stack);
 	}
 	return (0);
@@ -112,19 +94,21 @@ int	main(int argc, char **argv)
 void	ft_print_stacks(t_stack *stack)
 {
 	t_list	*tmp;
+	int		l;
 
 	ft_printf("\nStack A (len = %i):\n", stack->a.len);
 	tmp = stack->a.first;
-	while (tmp)
+	l = stack->a.len;
+	while (l-- > 0)
 	{
 		ft_printf("%d ", (int)((long)tmp->content));
 		tmp = tmp->next;
 	}
 	ft_printf("\n");
-
 	ft_printf("Stack B (len = %i):\n", stack->b.len);
 	tmp = stack->b.first;
-	while (tmp)
+	l = stack->b.len;
+	while (l-- > 0)
 	{
 		if (tmp->content)
 			ft_printf("%d ", (int)((long)tmp->content));
