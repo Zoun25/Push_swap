@@ -32,6 +32,8 @@ SRCS = push_swap.c \
 		movements/ft_rotate.c \
 		movements/ft_reverse.c \
 		movements/ft_swap.c \
+		algorithm/ft_algo.c \
+		algorithm/ft_algo_utils.c \
 		
 ######
 #OBJS#
@@ -52,6 +54,7 @@ $(NAME): ${LIBFT_LIB} $(OBJS)
 $(OBJS_DIR):
 	@mkdir $(OBJS_DIR)
 	@mkdir $(OBJS_DIR)movements
+	@mkdir $(OBJS_DIR)algorithm
 $(OBJS):		| $(OBJS_DIR)
 $(LIBFT_LIB):
 	@make -C $(LIBFT_DIR) -s

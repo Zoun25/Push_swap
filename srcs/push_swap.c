@@ -78,6 +78,7 @@ void	ft_lstfree(t_stack *stack)
 int	main(int argc, char **argv)
 {
 	t_stack	stack;
+	int		*sorted_array;
 
 	if (argc >= 2)
 	{
@@ -91,7 +92,17 @@ int	main(int argc, char **argv)
 		}
 		ft_create_stack_a(&stack);
 		ft_print_stacks(&stack);
-		ft_rotate_a(&stack);
+		/* if (stack.size < 10)
+			ft_simple_sort(&stack);
+		if (stack.size >= 10 && stack.size <= 100)
+			ft_sort_100(&stack);
+		if (stack.size > 100)
+			ft_sort_500(&stack); */
+		sorted_array = ft_getsorted(&stack);
+		if (ft_is_sorted(&stack, sorted_array))
+			ft_printf("Stack is sorted\n");
+		
+		free(sorted_array);
 		ft_print_stacks(&stack);
 		ft_lstfree(&stack);
 	}

@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 #include "../../include/push_swap.h"
-/*makes last content first and push the rest*/
+
 void	ft_reverse_a(t_stack *stack)
 {
 	t_list	*prev;
@@ -25,6 +25,7 @@ void	ft_reverse_a(t_stack *stack)
 	prev->next = NULL;
 	last->next = stack->a.first;
 	stack->a.first = last;
+	ft_printf("rra\n");
 }
 
 void	ft_reverse_b(t_stack *stack)
@@ -41,6 +42,7 @@ void	ft_reverse_b(t_stack *stack)
 	prev->next = NULL;
 	last->next = stack->b.first;
 	stack->b.first = last;
+	ft_printf("rrb\n");
 }
 
 void	ft_reverse(t_stack *stack)

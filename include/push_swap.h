@@ -42,5 +42,11 @@ void	ft_rotate(t_stack *stack);
 void	ft_reverse_a(t_stack *stack);
 void	ft_reverse_b(t_stack *stack);
 void	ft_reverse(t_stack *stack);
+/* void	ft_simple_sort(t_stack *stack);
+void	ft_sort_100(t_stack *stack);
+void	ft_sort_500(t_stack *stack); */
+int		ft_is_sorted(t_stack *stack, int *srt);
+int		*ft_getsorted(t_stack *stack);
+int		ft_get_min_index(t_stack *stack);
 
 #endif
