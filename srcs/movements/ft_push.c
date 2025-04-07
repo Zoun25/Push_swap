@@ -34,8 +34,7 @@ void	ft_push_b(t_stack *stack)
 		stack->b.first = node;
 	}
 	stack->b.len++;
-	if (stack->a.len > 0)
-		stack->a.len--;
+	stack->a.len--;
 	ft_printf("pb\n");
 }
 
@@ -51,7 +50,7 @@ void	ft_push_a(t_stack *stack)
 	node = stack->b.first;
 	stack->b.first = node->next;
 	node->next = NULL;
-	if (!stack->b.first)
+	if (!stack->a.first)
 	{
 		stack->a.first = node;
 		stack->a.first->next = NULL;
@@ -62,7 +61,6 @@ void	ft_push_a(t_stack *stack)
 		stack->a.first = node;
 	}
 	stack->a.len++;
-	if (stack->b.len > 0)
-		stack->b.len--;
+	stack->b.len--;
 	ft_printf("pa\n");
 }
