@@ -73,7 +73,7 @@ int	main(int argc, char **argv)
 		if (stack.size < 10)
 			ft_simple_sort(&stack, sorted_array);
 		if (stack.size >= 10 && stack.size <= 100)
-			ft_sort_100(&stack, sorted_array);
+			ft_sort_100(&stack);
 		/* if (stack.size > 100)
 			ft_sort_500(&stack); */
 		free(sorted_array);

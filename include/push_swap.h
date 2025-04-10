@@ -16,6 +16,7 @@
 # include "../libft/includes/ft_printf.h"
 # include "../libft/includes/get_next_line.h"
 # include "../libft/includes/libft.h"
+# include <limits.h>
 
 typedef struct pushswap_data
 {
@@ -53,7 +54,7 @@ int		ft_find_first_lk(t_list *lst, int key);
 t_list	*ft_get_last_node(t_stack *stack, char type);
 void	ft_five_cases(t_stack *stack);
 void	ft_simple_sort(t_stack *stack, int *srt);
-void	ft_sort_100(t_stack *stack, int *srt);
+void	ft_sort_100(t_stack *stack);
 void	ft_print_stacks(t_stack *stack);
 
 #endif

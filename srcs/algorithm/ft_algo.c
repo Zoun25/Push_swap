@@ -79,7 +79,8 @@ void	ft_amoves(t_stack *stack, int *srt, int i, int cut)
 		ft_push_b(stack);
 	}
 }
-/* 
+
+
 int	*ft_lis(t_stack *stack, int *lis_len)
 {
 	int	*dp;
@@ -92,10 +93,112 @@ int	*ft_lis(t_stack *stack, int *lis_len)
 	if (!dp || !prev)
 		return (NULL);
 	i = 0;
+	while (i < (int)stack->size)
+	{
+		dp[i] = 1;
+		prev[i++] = -1;
+	}
+	i = 1;
+	while (i < (int)stack->size)
+	{
+		j = 0;
+		while (j < i)
+		{
+			if (stack->knot[i] > stack->knot[j] && dp[i] < dp[j] + 1)
+			{
+				dp[i] = dp[j] + 1;
+				prev[i] = j;
+			}
+			j++;
+		}
+		i++;
+	}
+	i = 0;
+	int	max;
+	while (i < (int)stack->size)
+	{
+		if (dp[i] > *lis_len)
+		{
+			*lis_len = dp[i];
+			max = i;
+		}
+		i++;
+	}
+	int	*lis;
+	lis = (int *)ft_calloc((int)stack->size, sizeof(int *));
+	if (!lis)
+		return (NULL);
+	while (max != -1)
+	{
+		lis[max] = 1;
+		max = prev[max];
+	}
+	return (free(dp), free(prev), lis);
+}
 
-} */
+void	ft_sort_100(t_stack *stack)
+{
+	int	lis_len;
+	int	*lis;
+	int	i;
+	int	moves;
+	int	idx;
 
-void	ft_sort_100(t_stack *stack, int *srt)
+	lis = ft_lis(stack, &lis_len);
+	if (!lis)
+		ft_push_error(1);
+	i = 0;
+	while (i < (int)stack->a.len)
+	{
+		if (ft_is_in_lis(stack->a.first, lis, lis_len))
+			ft_rotate_a(stack);
+		else
+			ft_push_b(stack);
+	}
+	free(lis);
+	int	max_int;
+	int moves_a;
+	int moves_b;
+	int pos_moves_a;
+	int pos_moves_b;
+
+	max_int = INT_MAX;
+	i = 0;
+	while (stack->b.len > 0)
+	{
+		while (i < (int)stack->b.len)
+		{
+			moves = ft_comp_lis(stack, i, &pos_moves_a, &pos_moves_b);
+			if (moves < max_int)
+			{
+				max_int = moves;
+				idx = i;
+				moves_a = pos_moves_a;
+				moves_b = pos_moves_b;
+			}
+		}
+		i = 0;
+		if (idx <= (int)stack->b.len / 2)
+			while (i++ < idx)
+				ft_rotate_b(stack);
+		else
+			while (i++ < ((int)stack->b.len - idx))
+				ft_reverse_b(stack);
+		ft_exec_moves(stack, moves_a, moves_b);
+		ft_push_a(stack);
+	}
+	int min_idx;
+
+	min_idx = ft_get_min_index(stack, 'a');
+	if (min_idx <= (int)stack->a.len / 2)
+		while (min_idx-- > 0)
+			ft_rotate_a(stack);
+	else
+		while (min_idx++ < (int)stack->a.len)
+			ft_reverse_a(stack);
+}
+
+/* void	ft_sort_100(t_stack *stack, int *srt)
 {
 	int	i;
 	int	cut;
@@ -120,7 +223,7 @@ void	ft_sort_100(t_stack *stack, int *srt)
 		ft_push_a(stack);
 	}
 }
-
+ */
 /*
 void	ft_sort_500(t_stack *stack)
 {

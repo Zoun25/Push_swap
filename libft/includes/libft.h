@@ -65,6 +65,7 @@ void			ft_putstr_fd(char *s, int fd);
 void			ft_putendl_fd(char *s, int fd);
 void			ft_putnbr_fd(int n, int fd);
 int				ft_countwords(const char *s, char c);
+int				ft_abs(int n);
 t_list			*ft_lstnew(void *content);
 int				ft_lstsize(t_list *lst);
 void			ft_lstadd_front(t_list **lst, t_list *new);
