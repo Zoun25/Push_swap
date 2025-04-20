@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 #include "../../include/push_swap.h"
 
-void	ft_rotate_a(t_stack *stack)
+void	ft_rotate_a(t_stack *stack, int dbl)
 {
 	t_list	*node;
 
@@ -24,10 +24,11 @@ void	ft_rotate_a(t_stack *stack)
 	stack->a.first = node->next;
 	node->next = NULL;
 	ft_lstadd_back(&stack->a.first, node);
-	ft_printf("ra\n");
+	if (dbl != 1)
+		ft_printf("ra\n");
 }
 
-void	ft_rotate_b(t_stack *stack)
+void	ft_rotate_b(t_stack *stack, int dbl)
 {
 	t_list	*node;
 
@@ -40,7 +41,8 @@ void	ft_rotate_b(t_stack *stack)
 	stack->b.first = node->next;
 	node->next = NULL;
 	ft_lstadd_back(&stack->b.first, node);
-	ft_printf("ra\n");
+	if (dbl != 1)
+		ft_printf("rb\n");
 }
 
 void	ft_rotate(t_stack *stack)
@@ -55,7 +57,7 @@ void	ft_rotate(t_stack *stack)
 		ft_lstfree(stack);
 		ft_push_error(87);
 	}
-	ft_rotate_a(stack);
-	ft_rotate_b(stack);
+	ft_rotate_a(stack, 1);
+	ft_rotate_b(stack, 1);
 	ft_printf("rr\n");
 }

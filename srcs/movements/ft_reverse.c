@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 #include "../../include/push_swap.h"
 
-void	ft_reverse_a(t_stack *stack)
+void	ft_reverse_a(t_stack *stack, int dbl)
 {
 	t_list	*prev;
 	t_list	*last;
@@ -28,10 +28,11 @@ void	ft_reverse_a(t_stack *stack)
 	prev->next = NULL;
 	last->next = stack->a.first;
 	stack->a.first = last;
-	ft_printf("rra\n");
+	if (dbl != 1)
+		ft_printf("rra\n");
 }
 
-void	ft_reverse_b(t_stack *stack)
+void	ft_reverse_b(t_stack *stack, int dbl)
 {
 	t_list	*prev;
 	t_list	*last;
@@ -48,7 +49,8 @@ void	ft_reverse_b(t_stack *stack)
 	prev->next = NULL;
 	last->next = stack->b.first;
 	stack->b.first = last;
-	ft_printf("rrb\n");
+	if (dbl != 1)
+		ft_printf("rrb\n");
 }
 
 void	ft_reverse(t_stack *stack)
@@ -63,7 +65,7 @@ void	ft_reverse(t_stack *stack)
 		ft_lstfree(stack);
 		ft_push_error(87);
 	}
-	ft_reverse_a(stack);
-	ft_reverse_b(stack);
+	ft_reverse_a(stack, 1);
+	ft_reverse_b(stack, 1);
 	ft_printf("rrr\n");
 }

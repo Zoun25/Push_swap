@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 #include "../../include/push_swap.h"
 
-void	ft_swap_a(t_stack *stack)
+void	ft_swap_a(t_stack *stack, int dbl)
 {
 	t_list	*tmp;
 
@@ -24,10 +24,11 @@ void	ft_swap_a(t_stack *stack)
 	stack->a.first = tmp->next;
 	tmp->next = stack->a.first->next;
 	stack->a.first->next = tmp;
-	ft_printf("sa\n");
+	if (dbl != 1)
+		ft_printf("sa\n");
 }
 
-void	ft_swap_b(t_stack *stack)
+void	ft_swap_b(t_stack *stack, int dbl)
 {
 	t_list	*tmp;
 
@@ -40,7 +41,8 @@ void	ft_swap_b(t_stack *stack)
 	stack->b.first = tmp->next;
 	tmp->next = stack->b.first->next;
 	stack->b.first->next = tmp;
-	ft_printf("sb\n");
+	if (dbl != 1)
+		ft_printf("sb\n");
 }
 
 void	ft_swap_ss(t_stack *stack)
@@ -50,7 +52,7 @@ void	ft_swap_ss(t_stack *stack)
 		ft_lstfree(stack);
 		ft_push_error(87);
 	}
-	ft_swap_a(stack);
-	ft_swap_b(stack);
+	ft_swap_a(stack, 1);
+	ft_swap_b(stack, 1);
 	ft_printf("ss\n");
 }

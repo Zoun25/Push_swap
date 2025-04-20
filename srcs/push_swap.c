@@ -70,12 +70,13 @@ int	main(int argc, char **argv)
 		sorted_array = ft_getsorted(&stack);
 		if (ft_is_sorted(&stack, sorted_array))
 			return (free(sorted_array), ft_lstfree(&stack), 0);
-		if (stack.size < 10)
-			ft_simple_sort(&stack, sorted_array);
-		if (stack.size >= 10 && stack.size <= 100)
+		if (stack.size < 5)
+			ft_simple_sort(&stack);
+		if (stack.size > 4 && stack.size <= 100)
 			ft_sort_100(&stack);
-		/* if (stack.size > 100)
-			ft_sort_500(&stack); */
+		/* if (ft_is_sorted(&stack, sorted_array))
+			ft_printf("is sorted\n"); */
+		ft_print_stacks(&stack);
 		free(sorted_array);
 		ft_lstfree(&stack);
 	}
