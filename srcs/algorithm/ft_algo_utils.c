@@ -102,21 +102,28 @@ int	ft_get_max_num(t_stack *stack, char type)
 }
 
 /*returns idx of the number if exist*/
-int	ft_find_first_lk(t_list *lst, int key)
+int	ft_find_first_lk(t_stack *stack, char type, int key)
 {
 	int		i;
+	int		len;
 	t_list	*tmp;
 
+	if (type == 'a')
+	{
+		len = stack->a.len;
+		tmp = stack->a.first;
+	}
+	else
+	{
+		len = stack->b.len;
+		tmp = stack->b.first;
+	}
 	i = 0;
-	tmp = lst;
-	while (tmp->content)
+	while (i < len)
 	{
 		if ((int)(long)tmp->content == key)
 			return (i);
-		if (tmp->next)
-			tmp = tmp->next;
-		else
-			break ;
+		tmp = tmp->next;
 		i++;
 	}
 	return (-1);
@@ -133,14 +140,11 @@ int	ft_get_val_idx(t_stack *stack, char type, int val)
 	else
 		tmp = stack->b.first;
 	i = 0;
-	while (tmp->content)
+	while (i <= val)
 	{
 		if (i == val)
 			return ((int)(long)tmp->content);
-		if (tmp->next)
-			tmp = tmp->next;
-		else
-			break ;
+		tmp = tmp->next;
 		i++;
 	}
 	if (i == val)
@@ -353,27 +357,24 @@ int	ft_find_close_b(t_stack *stack, int key)
 	t_list	*tmp;
 	int		min;
 	int		med;
-	int		a;
+	int		b;
 
 	tmp = stack->b.first;
-	a = 0;
+	b = 0;
 	min = -1;
 	med = ft_get_min_num(stack, 'b');
-	while (tmp->content)
+	while (b < (int)stack->b.len)
 	{
 		if ((int)(long)tmp->content < key && (int)(long)tmp->content >= med)
 		{
-			a = 1;
 			min = (int)(long)tmp->content;
 			med = min;
 		}
-		if (tmp->next)
-			tmp = tmp->next;
-		else
-			break ;
+		tmp = tmp->next;
+		b++;
 	}
-	if (a == 1)
-		return (ft_find_first_lk(stack->b.first, min));
+	if (min != -1)
+		return (ft_find_first_lk(stack, 'b', min));
 	return (min);
 }
 
@@ -388,20 +389,17 @@ int	ft_find_close_a(t_stack *stack, int key)
 	a = 0;
 	max = -1;
 	med = ft_get_max_num(stack, 'a');
-	while (tmp->content)
+	while (a < (int)stack->a.len)
 	{
-		if ((int)(long)tmp->content > key && (int)(long)tmp->content <= med)
+		if (key < (int)(long)tmp->content && (int)(long)tmp->content <= med)
 		{
-			a = 1;
 			max = (int)(long)tmp->content;
 			med = max;
 		}
-		if (tmp->next)
-			tmp = tmp->next;
-		else
-			break ;
+		tmp = tmp->next;
+		a++;
 	}
-	if (a == 1)
-		return (ft_find_first_lk(stack->a.first, max));
+	if (max != -1)
+		return (ft_find_first_lk(stack, 'a', max));
 	return (max);
 }

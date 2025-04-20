@@ -32,8 +32,6 @@ int	ft_rot_a(t_stack *stack, int idx_a, int c)
 	return (c);
 }
 
-
-
 int	ft_get_negative_cost(t_stack *stack, int *index_b)
 {
 	int	cost;
@@ -50,9 +48,9 @@ int	ft_get_negative_cost(t_stack *stack, int *index_b)
 		sup_idx = ft_find_close_a(stack,
 				ft_get_val_idx(stack, 'b', idx_b));
 		if (sup_idx == -1)
-			cost = ft_cal_cost(stack, idx_b, min_idx);
+			cost = ft_cal_cost(stack, min_idx, idx_b);
 		else
-			cost = ft_cal_cost(stack, idx_b, sup_idx);
+			cost = ft_cal_cost(stack, sup_idx, idx_b);
 		if (lcost > cost)
 		{
 			lcost = cost;
@@ -102,15 +100,14 @@ void	ft_a_sort(t_stack *stack)
 	if (cost == 2147483647)
 		ft_push_error(87);
 	index_a = ft_a_idx(stack, index_b);
-	ft_printf("COST: %d NUM: %d min: %d SUP: %d\n", cost, ft_get_val_idx(stack, 'b', index_b), ft_get_min_index(stack, 'a'), ft_find_close_a(stack, ft_get_val_idx(stack, 'b', index_b)));
 	if (cost == 0 && index_a == 0 && index_b == 0)
 		ft_push_a(stack);
 	else
 	{
 		if (ft_negative_dir(stack, index_a, index_b) == -1)
-			cost = ft_rotation(stack, &index_a, &index_b, cost);
+			cost = ft_rotation(stack, &index_b, &index_a, cost);
 		else if (ft_negative_dir(stack, index_a, index_b) == 1)
-			cost = ft_rev_rotation(stack, &index_a, &index_b, cost);
+			cost = ft_rev_rotation(stack, &index_b, &index_a, cost);
 		if (cost > 0)
 			cost = ft_rot_rest_a(stack, index_a, index_b, cost);
 		if (cost == 0)

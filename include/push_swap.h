@@ -57,7 +57,7 @@ int		ft_get_min_num(t_stack *stack, char type);
 int		ft_get_max_num(t_stack *stack, char type);
 int		ft_get_min_index(t_stack *stack, char type);
 int		ft_get_max_index(t_stack *stack, char type);
-int		ft_find_first_lk(t_list *lst, int key);
+int		ft_find_first_lk(t_stack *stack, char type, int key);
 int		ft_find_close_sk(t_list	*lst, int key);
 int		ft_find_close_b(t_stack *stack, int key);
 int		ft_find_close_a(t_stack *stack, int key);

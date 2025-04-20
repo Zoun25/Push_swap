@@ -1,4 +1,41 @@
-/* int	*ft_lis(t_stack *stack, int *lis_len)
+/*
+revisa B
+
+
+ft_printf("NUM: %d ", ft_get_val_idx(stack, 'a', idx_a));
+		if (low_idx == -1)
+		{
+			ft_printf("MAX: %d ", max_idx);
+			ft_printf("MAX_VAL: %d\n", ft_get_val_idx(stack, 'b', max_idx));
+			cost = ft_cal_cost(stack, idx_a, max_idx);
+		}
+		else
+		{
+			ft_printf("LOW: %d ", low_idx);
+			ft_printf("LOW_VAL: %d\n", ft_get_val_idx(stack, 'b', low_idx));
+			cost = ft_cal_cost(stack, idx_a, low_idx);
+		}
+
+revisa A
+
+
+ft_printf("NUM: %d ", ft_get_val_idx(stack, 'b', idx_b));
+		if (sup_idx == -1)
+		{
+			ft_printf("MIN: %d ", min_idx);
+			ft_printf("MIN_VAL: %d\n", ft_get_val_idx(stack, 'a', min_idx));
+			cost = ft_cal_cost(stack, min_idx, idx_b);
+		}
+		else
+		{
+			ft_printf("SUP: %d ", sup_idx);
+			ft_printf("SUP_VAL: %d\n", ft_get_val_idx(stack, 'a', sup_idx));
+			cost = ft_cal_cost(stack, sup_idx, idx_b);
+		}
+
+
+
+ int	*ft_lis(t_stack *stack, int *lis_len)
 {
 	int	*dp;
 	int	*prev;

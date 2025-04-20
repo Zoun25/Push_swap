@@ -64,6 +64,7 @@ int	main(int argc, char **argv)
 	{
 		stack.size = argc - 1;
 		ft_check_stack(&stack, argv);
+		ft_printf("aqui\n");
 		if (stack.size == 1)
 			return (free(stack.knot), 0);
 		ft_create_stack_a(&stack);
@@ -72,11 +73,10 @@ int	main(int argc, char **argv)
 			return (free(sorted_array), ft_lstfree(&stack), 0);
 		if (stack.size < 5)
 			ft_simple_sort(&stack);
-		if (stack.size > 4 && stack.size <= 100)
+		if (stack.size > 4)
 			ft_sort_100(&stack);
 		/* if (ft_is_sorted(&stack, sorted_array))
 			ft_printf("is sorted\n"); */
-		ft_print_stacks(&stack);
 		free(sorted_array);
 		ft_lstfree(&stack);
 	}

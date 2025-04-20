@@ -129,7 +129,7 @@ int	ft_rotation(t_stack *stack, int *idx_a, int *idx_b, int c)
 int	ft_rot_rest(t_stack *stack, int idx_a, int idx_b, int c)
 {
 	if (idx_a == 0)
-		c = ft_rot_a(stack, idx_b, c);
+		c = ft_rot_b(stack, idx_b, c);
 	else
 		c = ft_rot_a(stack, idx_a, c);
 	return (c);
@@ -138,10 +138,27 @@ int	ft_rot_rest(t_stack *stack, int idx_a, int idx_b, int c)
 int	ft_rot_rest_a(t_stack *stack, int idx_a, int idx_b, int c)
 {
 	if (idx_b == 0)
-		c = ft_rot_a(stack, idx_b, c);
+		c = ft_rot_a(stack, idx_a, c);
 	else
-		c = ft_rot_b(stack, idx_a, c);
+		c = ft_rot_b(stack, idx_b, c);
 	return (c);
+}
+
+void	ft_the_last_resort(t_stack *stack)
+{
+	int	lower_idx;
+
+	lower_idx = ft_get_min_index(stack, 'a');
+	if (lower_idx > ((int)stack->a.len / 2))
+	{
+		while (lower_idx++ < (int)stack->a.len)
+			ft_reverse_a(stack, 0);
+	}
+	else
+	{
+		while (lower_idx-- > 0)
+			ft_rotate_a(stack, 0);
+	}
 }
 
 void	ft_sort_100(t_stack *stack)
@@ -151,7 +168,7 @@ void	ft_sort_100(t_stack *stack)
 	while (stack->a.len > 3 && !ft_stack_sorted(stack, 'a'))
 		ft_b_sort(stack);
 	ft_simple_sort(stack);
-	ft_print_stacks(stack);
 	while (stack->b.len > 0)
 		ft_a_sort(stack);
+	ft_the_last_resort(stack);
 }
