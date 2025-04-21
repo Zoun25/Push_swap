@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   fails.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ysadki-z <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/04/21 02:54:01 by ysadki-z          #+#    #+#             */
+/*   Updated: 2025/04/21 02:54:03 by ysadki-z         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 /*
 revisa B
 
@@ -32,6 +44,19 @@ ft_printf("NUM: %d ", ft_get_val_idx(stack, 'b', idx_b));
 			ft_printf("SUP_VAL: %d\n", ft_get_val_idx(stack, 'a', sup_idx));
 			cost = ft_cal_cost(stack, sup_idx, idx_b);
 		}
+
+		ft_print_stacks(stack);
+	ft_printf("NUM_VAL: %d ", ft_get_val_idx(stack, 'b', *index_b));
+	ft_printf("NUM_IDX: %d ", *index_b);
+	ft_printf("MIN: %d ", min_idx);
+	ft_printf("MIN_VAL: %d ", ft_get_val_idx(stack, 'a', min_idx));
+	idx = ft_find_close_a(stack, ft_get_val_idx(stack, 'b', *index_b));
+	if (idx != -1)
+	{
+		ft_printf("SUP: %d ", idx);
+		ft_printf("SUP_VAL: %d ", ft_get_val_idx(stack, 'a', idx));
+	}
+	ft_printf("COST: %d\n", lcost);
 
 
 
@@ -318,8 +343,6 @@ void	ft_simple_sort(t_stack *stack, int *srt)
 	else
 		ft_sort_10(stack, 0);
 }*/
-
-
 /* int	ft_cal_cost(t_stack *stack, int idx_a, int idx_b)
 {
 	int	cost;
@@ -346,3 +369,154 @@ void	ft_simple_sort(t_stack *stack, int *srt)
 		cost = a + b;
 	return (cost);
 } */
+/* int	ft_getval(t_stack *stack, int index, char type)
+{
+	int		i;
+	int		len;
+	t_list	*tmp;
+
+	if (index < 0 || index > (int)stack->size)
+		return (-1);
+	if (type == 'a')
+	{
+		tmp = stack->a.first;
+		len = (int)stack->a.len;
+	}
+	else
+	{
+		tmp = stack->b.first;
+		len = (int)stack->b.len;
+	}
+	i = 0;
+	while (i < index && i++ < len)
+		tmp = tmp->next;
+	return ((int)(long)tmp->content);
+}
+
+int	ft_find_first_sk(t_list *lst, int key)
+{
+	int		i;
+	t_list	*tmp;
+
+	i = 0;
+	tmp = lst;
+	while (tmp->content)
+	{
+		if ((int)(long)tmp->content < key)
+			return (i);
+		if (tmp->next)
+			tmp = tmp->next;
+		else
+			break ;
+		i++;
+	}
+	return (-1);
+}
+
+int	*ft_getsorted(t_stack *stack)
+{
+	int		*sorted_array;
+	int		i;
+
+	i = 0;
+	sorted_array = (int *)malloc(sizeof(int *) * stack->size);
+	if (sorted_array == NULL)
+		return (NULL);
+	while (i < (int)stack->size)
+	{
+		sorted_array[i] = stack->knot[i];
+		i++;
+	}
+	sorted_array = ft_bubble(sorted_array, ((int)stack->size -1));
+	return (sorted_array);
+}
+
+t_list	*ft_get_last_node(t_stack *stack, char type)
+{
+	t_list	*tmp;
+
+	if (type == 'a')
+		tmp = stack->a.first;
+	else
+		tmp = stack->b.first;
+	while (tmp->next)
+		tmp = tmp->next;
+	return (tmp);
+}
+
+int	*ft_bubble(int *sorted_array, int size)
+{
+	int	i;
+	int	b;
+	int	tmp;
+
+	b = 1;
+	while (b)
+	{
+		b = 0;
+		i = 0;
+		while (i < size)
+		{
+			if (sorted_array[i] > sorted_array[i + 1])
+			{
+				tmp = sorted_array[i];
+				sorted_array[i] = sorted_array[i + 1];
+				sorted_array[i + 1] = tmp;
+				b = 1;
+			}
+			i++;
+		}
+	}
+	return (sorted_array);
+}
+
+int	ft_is_sorted(t_stack *stack, int *srt)
+{
+	int		i;
+	int		size;
+	t_list	*tmp;
+
+	tmp = stack->a.first;
+	size = (int)stack->size - 1;
+	i = 0;
+	while (tmp->content && srt[i] == (int)(long)tmp->content && i < size)
+	{
+		i++;
+		tmp = tmp->next;
+		if (i == size)
+			return (1);
+	}
+	return (0);
+}
+
+
+
+void	ft_print_stacks(t_stack *stack)
+{
+	t_list	*tmp;
+	int		l;
+
+	ft_printf("\nStack A (len = %i):\n", stack->a.len);
+	tmp = stack->a.first;
+	l = stack->a.len;
+	while (l-- > 0)
+	{
+		ft_printf("%d ", (int)((long)tmp->content));
+		tmp = tmp->next;
+	}
+	ft_printf("\n");
+	ft_printf("Stack B (len = %i):\n", stack->b.len);
+	tmp = stack->b.first;
+	l = stack->b.len;
+	while (l-- > 0)
+	{
+		if (tmp->content)
+			ft_printf("%d ", (int)((long)tmp->content));
+		else
+			ft_printf("NULL ");
+		tmp = tmp->next;
+	}
+	ft_printf("\n");
+}
+
+ */

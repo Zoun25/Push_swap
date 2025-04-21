@@ -15,7 +15,7 @@ int	ft_rot_b(t_stack *stack, int idx_b, int c)
 {
 	if (idx_b <= ((int)stack->b.len / 2))
 	{
-		while (c > 0)
+		while (c > 0 && idx_b-- > 0)
 		{
 			c--;
 			ft_rotate_b(stack, 0);
@@ -23,7 +23,7 @@ int	ft_rot_b(t_stack *stack, int idx_b, int c)
 	}
 	else
 	{
-		while (c > 0)
+		while (c > 0 && idx_b++ < (int)stack->b.len)
 		{
 			c--;
 			ft_reverse_b(stack, 0);

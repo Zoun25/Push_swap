@@ -37,6 +37,8 @@ SRCS = push_swap.c \
 		algorithm/ft_algorithm_a.c \
 		algorithm/ft_algo_utils.c \
 		algorithm/ft_algo_utils_2.c \
+		algorithm/ft_algo_utils_3.c \
+		algorithm/ft_rotations.c \
 		
 ######
 #OBJS#

@@ -58,55 +58,21 @@ void	ft_lstfree(t_stack *stack)
 int	main(int argc, char **argv)
 {
 	t_stack	stack;
-	int		*sorted_array;
 
 	if (argc >= 2)
 	{
 		stack.size = argc - 1;
 		ft_check_stack(&stack, argv);
-		ft_printf("aqui\n");
 		if (stack.size == 1)
 			return (free(stack.knot), 0);
 		ft_create_stack_a(&stack);
-		sorted_array = ft_getsorted(&stack);
-		if (ft_is_sorted(&stack, sorted_array))
-			return (free(sorted_array), ft_lstfree(&stack), 0);
+		if (ft_stack_sorted(&stack, 'a'))
+			return (ft_lstfree(&stack), 0);
 		if (stack.size < 5)
 			ft_simple_sort(&stack);
 		if (stack.size > 4)
-			ft_sort_100(&stack);
-		/* if (ft_is_sorted(&stack, sorted_array))
-			ft_printf("is sorted\n"); */
-		free(sorted_array);
+			ft_sort(&stack);
 		ft_lstfree(&stack);
 	}
 	return (0);
-}
-
-void	ft_print_stacks(t_stack *stack)
-{
-	t_list	*tmp;
-	int		l;
-
-	ft_printf("\nStack A (len = %i):\n", stack->a.len);
-	tmp = stack->a.first;
-	l = stack->a.len;
-	while (l-- > 0)
-	{
-		ft_printf("%d ", (int)((long)tmp->content));
-		tmp = tmp->next;
-	}
-	ft_printf("\n");
-	ft_printf("Stack B (len = %i):\n", stack->b.len);
-	tmp = stack->b.first;
-	l = stack->b.len;
-	while (l-- > 0)
-	{
-		if (tmp->content)
-			ft_printf("%d ", (int)((long)tmp->content));
-		else
-			ft_printf("NULL ");
-		tmp = tmp->next;
-	}
-	ft_printf("\n");
 }

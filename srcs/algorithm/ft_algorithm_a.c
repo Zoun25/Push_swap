@@ -15,7 +15,7 @@ int	ft_rot_a(t_stack *stack, int idx_a, int c)
 {
 	if (idx_a <= ((int)stack->a.len / 2))
 	{
-		while (c > 0)
+		while (c > 0 && idx_a-- > 0)
 		{
 			c--;
 			ft_rotate_a(stack, 0);
@@ -23,7 +23,7 @@ int	ft_rot_a(t_stack *stack, int idx_a, int c)
 	}
 	else
 	{
-		while (c > 0)
+		while (c > 0 && idx_a++ < (int)stack->a.len)
 		{
 			c--;
 			ft_reverse_a(stack, 0);
@@ -74,7 +74,6 @@ int	ft_a_idx(t_stack *stack, int index_b)
 		return (sup);
 }
 
-
 int	ft_negative_dir(t_stack *stack, int idx_a, int idx_b)
 {
 	int	a_moves;
@@ -109,7 +108,7 @@ void	ft_a_sort(t_stack *stack)
 		else if (ft_negative_dir(stack, index_a, index_b) == 1)
 			cost = ft_rev_rotation(stack, &index_b, &index_a, cost);
 		if (cost > 0)
-			cost = ft_rot_rest_a(stack, index_a, index_b, cost);
+			cost = ft_rot_rest(stack, index_a, index_b, cost);
 		if (cost == 0)
 			ft_push_a(stack);
 		else
